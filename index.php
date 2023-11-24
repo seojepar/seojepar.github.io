@@ -20,6 +20,7 @@
         ?>
     </ol>
     <h2><?=$_GET['id']?></h2>
+    <!--URL로 넘어온 id의 값-->
     <?=file_get_contents("data/{$_GET['id']}")?>
 </body>
 </html>
