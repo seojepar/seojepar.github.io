@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Whitehole</title>
-        <meta charset="utf-8">
-    </head>
-    <body>
-        <h1>Computer Organizations</h1>
-        <ol>
-            <li>CPU</li>
-            <li>Memory</li>    
-        </ol>
-        <p><a href="https://" target="_blank" title="CPU</p>
-    </body>
+<head>
+    <title>Whitehole</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <h1><a href="index.html">Computer Organizations</a></h1>
+    <ol>
+        <?php
+        $lists = scandir('data');
+        foreach($lists as $list){
+            if(in_array($list, ['.','..']))
+                continue;
+            ?>
+            <li><a href="index.php?id=<?=$list?>"><?=$list?></a></li>
+            <!--id가 뭔지에 대해 알아보기-->
+            <?php
+        }
+        ?>
+    </ol>
+    <h2><?=$_GET['id']?></h2>
+    <?=file_get_contents("data/{$_GET['id']}")?>
+</body>
 </html>
 <!--파일 개수가 많아질것 같아서 PHP나 MySQL을 공부해야될 필요성이 느껴졌다.
 하지만 gituhub Pages는 static 서버이므로 데이터베이스를 지원하지 않고 그저 html만 읽어서 처리해주기 때문에 (대충) 새로운 https://www.000webhost.com/  서버를 구해서 다시 시작해야겠다는 생각도 들었다.
